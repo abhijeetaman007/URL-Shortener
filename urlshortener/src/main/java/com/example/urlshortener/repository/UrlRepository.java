@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 
 public class UrlRepository {
 
-    @Autowired
+//    @Autowired
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -24,4 +24,11 @@ public class UrlRepository {
     public Url getByKey(String key) {
         return entityManager.find(Url.class, key); //returns Url object
     }
+
+    public void deleteUrl(Url url) {
+        entityManager.remove(url);
+    }
+
+
 }
+

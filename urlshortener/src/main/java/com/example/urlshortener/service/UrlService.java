@@ -37,4 +37,11 @@ public class UrlService {
         }
         return null;
     }
+
+    public void deleteUrl(String urlkey) {
+        if(urlkey != null) {
+            Url url = urlRepository.getByKey(urlkey);
+            urlRepository.deleteUrl(url);
+        }
+    }
 }

@@ -21,6 +21,7 @@ public class UrlController {
     @Transactional //Making whole API transactional
     public CreateUrlResponse create(@RequestBody CreateUrlRequest createUrlRequest) {
 //        return CreateUrlResponse.builder().build();
+        System.out.println("CreateUrlRequest: " + createUrlRequest);
         String url = urlService.createUrl(createUrlRequest);
         return CreateUrlResponse.builder()
                 .isSuccess(true)
@@ -33,6 +34,9 @@ public class UrlController {
     @DeleteMapping("/delete/{key}")
     @Transactional
     public ResponseEntity delete(@PathVariable String key) {
-        return ResponseEntity.ok().build();
+//        return ResponseEntity.ok().build();
+        System.out.println("Key: " + key);
+           urlService.deleteUrl(key);
+           return ResponseEntity.ok().build();
     }
 }
