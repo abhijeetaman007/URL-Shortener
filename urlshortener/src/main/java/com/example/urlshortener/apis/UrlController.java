@@ -23,6 +23,9 @@ public class UrlController {
 //        return CreateUrlResponse.builder().build();
         System.out.println("CreateUrlRequest: " + createUrlRequest);
         String url = urlService.createUrl(createUrlRequest);
+        if(url == null) {
+            return CreateUrlResponse.builder().isSuccess(false).msg("Alias already exists").build();
+        }
         return CreateUrlResponse.builder()
                 .isSuccess(true)
                 .url(url)
